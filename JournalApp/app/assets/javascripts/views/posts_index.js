@@ -1,5 +1,5 @@
 JournalApp.Views.PostsIndex = Backbone.View.extend({
-  template: JST['postsIndex'],
+  template: JST['posts_index'],
 
   tagName: "ul",
 

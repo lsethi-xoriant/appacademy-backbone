@@ -1,4 +1,6 @@
 <h3><%= post.escape("title") %></h3>
-<br>
-<%= post.escape("body") %>
+
+<p><%= post.escape("body") %></p>
+
+<a href="#<%= post.url() + '/edit' %>">Edit</a><br>
 <a href="#<%= post.urlRoot %>">Back to Index</a>
