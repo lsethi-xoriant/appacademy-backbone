@@ -1,10 +1,9 @@
 JournalApp.Views.PostsIndex = Backbone.View.extend({
   template: JST['posts_index'],
 
-  tagName: "ul",
-
   initialize: function () {
     this.listenTo(this.collection, 'add remove reset sync', this.render);
+    this.$ul = $("<ul>");
   },
 
   render: function () {
@@ -12,12 +11,14 @@ JournalApp.Views.PostsIndex = Backbone.View.extend({
     this.$el.html(content);
 
     var view = this;
-
+    this.$ul.empty();
     this.collection.each(function (post) {
       var item = new JournalApp.Views.PostsIndexItems({ model: post });
-      view.$el.append(item.render().$el);
-    });
+      view.$ul.append(item.render().$el);
 
+      // view.$el.append(item.render().$el);
+    });
+    this.$el.prepend(this.$ul);
     return this;
   }
 });
