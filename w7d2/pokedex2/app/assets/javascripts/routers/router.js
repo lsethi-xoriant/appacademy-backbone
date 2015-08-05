@@ -1,7 +1,8 @@
 Pokedex.Routers.Router = Backbone.Router.extend ({
   routes: {
     "": "pokemonIndex",
-    "pokemon/:id": "pokemonDetail"
+    "pokemon/:id": "pokemonDetail",
+    "pokemon/:pokemonId/toys/:toyId": "toyDetail"
   },
 
   pokemonIndex: function (callback) {
@@ -20,5 +21,17 @@ Pokedex.Routers.Router = Backbone.Router.extend ({
     poke.fetch();
     var detail = new Pokedex.Views.PokemonDetail({ model: poke });
     $('#pokedex .pokemon-detail').html(detail.render().$el);
+
+    this._pokemonDetail = detail;
+  },
+
+  toyDetail: function (pokemonId, toyId) {
+    if (this._pokemonDetail === undefined) {
+      this.pokemonDetail(pokemonId, this.toyDetail.bind(this, pokemonId, toyId));
+      return;
+    }
+    var toy = this._pokemonDetail.model.toys().get(toyId);
+    var toyDetail = new Pokedex.Views.ToyDetail({ model: toy });
+    $('#pokedex .toy-detail').html(toyDetail.render().$el);
   }
 });

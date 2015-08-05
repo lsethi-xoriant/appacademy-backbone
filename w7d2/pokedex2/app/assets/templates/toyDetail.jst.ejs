@@ -6,7 +6,7 @@
 </div>
 <select>
  debugger;
-  <% pokemon.each(function(poke) { %>
+  <% pokemon.forEach(function(poke) { %>
     <% var selected = "" %>
     <% if (poke.escape('id') === (toy.escape('pokemon_id'))) { %>
       <% selected = "selected" %>

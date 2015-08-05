@@ -12,9 +12,10 @@ Pokedex.Views.PokemonDetail = Backbone.View.extend({
   selectToyFromList: function(event) {
 
     var id = $(event.currentTarget).data("toy-id");
+    var pokeId = $(event.currentTarget).data("pokemon-id");
     var toy = this.model.toys().get(id);
-    var toyDetailView = new Pokedex.Views.ToyDetail({ model: toy });
-    $("#pokedex .toy-detail").hmtl(toyDetailView.render().$el);
+
+    Backbone.history.navigate("pokemon/" + pokeId + "/toys/" + id, {trigger: true});
   },
 
   render: function () {
