@@ -7,7 +7,8 @@ JournalApp.Views.PostsIndexItems = Backbone.View.extend({
   tagName: "li",
   template: JST["posts_index_item"],
 
-  delete: function () {
+  delete: function (event) {
+    event.preventDefault();
     this.model.destroy();
     this.remove();
   },

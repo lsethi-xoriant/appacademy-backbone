@@ -18,6 +18,10 @@ class PostsController < ApplicationController
     render :json => @post
   end
 
+  def destroy
+    fail
+  end
+
   private
 
   def post_params
