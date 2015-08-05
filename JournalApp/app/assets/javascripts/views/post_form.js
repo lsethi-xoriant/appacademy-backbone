@@ -20,7 +20,6 @@ JournalApp.Views.PostForm = Backbone.View.extend({
         that.collection.add(that.model);
         Backbone.history.navigate(that.model.url(), {trigger: true});
       },
-
       error: function(model, response, options) {
         var errors = response.responseText;
         that.render();

@@ -1,6 +1,6 @@
 JournalApp.Routers.PostsRouter = Backbone.Router.extend({
   routes: {
-    "": "index",
+    "": "newPost",
     "posts": "index",
     "posts/new": "newPost",
     "posts/:id": "displayPost",
@@ -9,8 +9,15 @@ JournalApp.Routers.PostsRouter = Backbone.Router.extend({
 
   initialize: function ($rootEl) {
     this.$rootEl = $rootEl;
+    this.$content = this.$rootEl.find('#content');
+    this.$sidebar = this.$rootEl.find('#sidebar');
+
     this.collection = new JournalApp.Collections.Posts();
     this.collection.fetch({reset: true});
+
+    this.$sidebar.html(new JournalApp.Views.PostsIndex({
+      collection: this.collection
+    }).render().$el);
   },
 
   index: function () {
@@ -46,7 +53,7 @@ JournalApp.Routers.PostsRouter = Backbone.Router.extend({
 
   swap: function (newView) {
     this._view && this._view.remove();
-    this.$rootEl.html(newView.render().$el);
+    this.$content.html(newView.render().$el);
     this._view = newView;
   }
 });
