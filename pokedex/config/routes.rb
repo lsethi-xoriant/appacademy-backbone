@@ -6,4 +6,7 @@ Rails.application.routes.draw do
     defaults: {format: :json},
     only: [:create, :destroy, :index, :show, :update]
   )
+
+  resources :toys, only: [:update, :show]
+
 end
