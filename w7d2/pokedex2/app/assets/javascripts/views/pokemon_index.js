@@ -19,8 +19,12 @@ Pokedex.Views.PokemonIndex = Backbone.View.extend({
     this.collection.each(this.addPokemonToList.bind(this));
   },
 
-  refreshPokemon: function() {
-    this.collection.fetch({});
+  refreshPokemon: function(callback) {
+    this.collection.fetch({
+      success: function() {
+        if (callback) { callback(); }
+      }
+    });
   },
 
   selectPokemonFromList: function(event) {
