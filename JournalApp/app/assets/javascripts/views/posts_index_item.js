@@ -11,6 +11,7 @@ JournalApp.Views.PostsIndexItems = Backbone.View.extend({
     event.preventDefault();
     this.model.destroy();
     this.remove();
+    Backbone.history.navigate('', {trigger: true});
   },
 
   render: function () {
