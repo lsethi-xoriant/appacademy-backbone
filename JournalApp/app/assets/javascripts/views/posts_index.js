@@ -12,12 +12,12 @@ JournalApp.Views.PostsIndex = Backbone.View.extend({
 
     var view = this;
     this.$ul.empty();
+
     this.collection.each(function (post) {
       var item = new JournalApp.Views.PostsIndexItems({ model: post });
       view.$ul.append(item.render().$el);
-
-      // view.$el.append(item.render().$el);
     });
+
     this.$el.prepend(this.$ul);
     return this;
   }

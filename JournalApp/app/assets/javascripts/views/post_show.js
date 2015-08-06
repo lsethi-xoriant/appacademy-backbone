@@ -11,7 +11,24 @@ JournalApp.Views.PostShow = Backbone.View.extend({
 
   render: function () {
     var content = this.template({ post: this.model });
-    this.$el.html(content);
+    var titleView = new JournalApp.Views.FancyInput({
+      model: this.model,
+      tagType: "h3",
+      inputType: "input",
+      propertyName: "title"
+    });
+
+    var bodyView = new JournalApp.Views.FancyInput({
+      model: this.model,
+      tagType: "p",
+      inputType: "textarea",
+      propertyName: "body"
+    });
+
+    this.$el.empty();
+    this.$el.append(titleView.render().$el);
+    this.$el.append(bodyView.render().$el);
+    
     return this;
   },
 
