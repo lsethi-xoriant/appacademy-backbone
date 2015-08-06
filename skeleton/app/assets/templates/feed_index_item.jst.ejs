@@ -1,1 +1,4 @@
-<a href=" <%= feed.escape("url") %> "> <%= feed.escape("title") %> </a> <button class="destroy-feed">Delete</button>
+<a href="#/feeds/<%= feed.escape("id") %>">
+  <%= feed.escape("title") %>
+</a>
+<button class="destroy-feed">Delete</button>

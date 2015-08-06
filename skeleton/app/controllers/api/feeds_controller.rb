@@ -5,6 +5,7 @@ class Api::FeedsController < ApplicationController
 
   def show
     feed = Feed.find(params[:id])
+    feed.reload if params[:force_reload] == "true"
     render :json => feed, include: :latest_entries
   end
 
