@@ -1,4 +1,5 @@
 require 'open-uri'
+require 'byebug'
 
 class Feed < ActiveRecord::Base
   has_many :entries, :dependent => :destroy
@@ -36,5 +37,12 @@ class Feed < ActiveRecord::Base
     rescue SimpleRSSError
       return false
     end
+  end
+
+  def latest_entries
+    if self.updated_at < 30.seconds.ago
+      self.reload
+    end
+    self.entries
   end
 end
