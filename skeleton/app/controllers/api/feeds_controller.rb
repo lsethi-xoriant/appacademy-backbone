@@ -1,4 +1,5 @@
 class Api::FeedsController < ApplicationController
+  before_action :redirect_if_not_login
   def index
     render :json => Feed.all
   end
