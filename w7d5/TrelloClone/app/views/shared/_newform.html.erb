@@ -1,11 +1,13 @@
 <% if form_type == "user" %>
-  <% action_url = api_users_url %>
+  <% action_url = users_url %>
   <% button_text = "Sign Up" %>
 <% elsif form_type == "session" %>
   <% action_url = session_url %>
   <% button_text = "Sign In" %>
 <% end %>
-
+<%= render "shared/errors" %>
+<br>
+<br>
 <form action="<%= action_url %>" method="post">
   <%= authenticity_token %>
   <label>Username:
