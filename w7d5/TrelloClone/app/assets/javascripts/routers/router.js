@@ -9,6 +9,7 @@ TrelloClone.Routers.Router = Backbone.Router.extend({
   },
 
   index: function () {
-    
+    var boardIndexView = new TrelloClone.Views.BoardIndex();
+    this.$rootEl.html(boardIndexView.render().$el);
   }
 });
