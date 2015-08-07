@@ -1,0 +1,28 @@
+<% if form_type == "user" %>
+  <% action_url = api_users_url %>
+  <% button_text = "Sign Up" %>
+<% elsif form_type == "session" %>
+  <% action_url = session_url %>
+  <% button_text = "Sign In" %>
+<% end %>
+
+<form action="<%= action_url %>" method="post">
+  <%= authenticity_token %>
+  <label>Username:
+    <br>
+    <input type="text" name="user[username]" value="<%= @user.username %>">
+  </label>
+
+  <br>
+  <br>
+
+  <label>Password:
+    <br>
+    <input type="password" name="user[password]">
+  </label>
+
+  <br>
+  <br>
+
+  <button type="submit"><%= button_text %></button>
+</form>
