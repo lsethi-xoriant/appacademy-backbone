@@ -2,15 +2,17 @@ require 'open-uri'
 require 'byebug'
 
 class Feed < ActiveRecord::Base
+  validates :title, :url, :user, presence: true
   has_many :entries, :dependent => :destroy
+  belongs_to :user
 
-  def self.find_or_create_by_url(url)
+  def self.find_or_create_by_url(url, user_id)
     feed = Feed.find_by_url(url)
     return feed if feed
 
     begin
       feed_data = SimpleRSS.parse(open(url))
-      feed = Feed.create!(title: feed_data.title, url: url)
+      feed = Feed.create!(title: feed_data.title, url: url, user_id: user_id)
       feed_data.entries.each do |entry_data|
         Entry.create_from_json!(entry_data, feed)
       end

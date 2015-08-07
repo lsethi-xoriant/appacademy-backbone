@@ -1,7 +1,8 @@
 class Api::FeedsController < ApplicationController
   before_action :redirect_if_not_login
   def index
-    render :json => Feed.all
+    @feeds = Feed.where("user_id = ?", current_user.id)
+    render :json => @feeds
   end
 
   def show
@@ -11,7 +12,7 @@ class Api::FeedsController < ApplicationController
   end
 
   def create
-    feed = Feed.find_or_create_by_url(feed_params[:url])
+    feed = Feed.find_or_create_by_url(feed_params[:url], current_user.id)
     if feed
       render :json => feed
     else
