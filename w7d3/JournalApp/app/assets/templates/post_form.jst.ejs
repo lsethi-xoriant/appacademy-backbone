@@ -1,0 +1,16 @@
+<label>Title:<br>
+  <input type="text" name="post[title]" value="<%= post.escape('title') %>">
+</label>
+<br>
+<br>
+<label>Body:<br>
+  <textarea name="post[body]"
+            rows="8"
+            cols="40"><%= post.escape('body') %></textarea>
+</label>
+<br>
+<br>
+<button><%= caption %></button>
+<br>
+<br>
+<a href="#">Back to Posts Index</a>
