@@ -1,3 +1,3 @@
 TrelloClone.Models.Board = Backbone.Model.extend({
-  urlRoot: "/boards"
+  urlRoot: "/api/boards"
 });
