@@ -1,1 +1,1 @@
-json.(@list, :id, :title, :ord, :board_id)
+json.partial! "list", list: @list
