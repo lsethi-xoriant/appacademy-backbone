@@ -21,11 +21,12 @@ TrelloClone.Views.ListNew = Backbone.View.extend({
     debugger;
 
     var list = new TrelloClone.Models.List();
+
     list.set(data);
     list.save({}, {
       success: function () {
         this.model.lists().add(list);
-        Backbone.history.navigate("", {trigger: true});
+        Backbone.history.navigate("boards/" + this.model.get("id"), {trigger: true});
       }.bind(this)
     })
   }
