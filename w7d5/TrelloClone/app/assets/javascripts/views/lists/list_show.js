@@ -1,7 +1,15 @@
-TrelloClone.Views.ListShow = Backbone.View.extend({
+TrelloClone.Views.ListShow = Backbone.CompositeView.extend({
   template: JST["list_show"],
 
   className: "list",
+
+  initialize: function () {
+
+  },
+
+  addCard: function (card) {
+
+  },
 
   render: function () {
     var content = this.template({ list: this.model });
