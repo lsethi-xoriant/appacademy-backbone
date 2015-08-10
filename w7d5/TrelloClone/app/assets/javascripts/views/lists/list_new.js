@@ -16,10 +16,6 @@ TrelloClone.Views.ListNew = Backbone.View.extend({
   submit: function (event) {
     event.preventDefault();
     var data = $(event.currentTarget).serializeJSON();
-    data["list"]["board_id"] = this.model.get("id");
-    data["list"]["ord"] = 1;
-    debugger;
-
     var list = new TrelloClone.Models.List();
 
     list.set(data);
