@@ -1,10 +1,8 @@
 TrelloClone.Views.BoardView = Backbone.View.extend({
   template: JST["board_view"],
 
-  className: "board",
-
-  initialize: function () {
-    this.listenTo(this.model, "sync", this.render)
+  initialize: function (options) {
+    this.listenTo(this.model, "sync", this.render);
   },
 
   render: function () {
