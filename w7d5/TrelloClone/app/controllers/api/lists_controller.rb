@@ -2,7 +2,7 @@ class Api::ListsController < ApplicationController
   def create
     @list = List.new(list_params)
     if @list.save
-      render 'show'
+      render json: @list
     else
       render json: @list.errors.full_messages
     end
