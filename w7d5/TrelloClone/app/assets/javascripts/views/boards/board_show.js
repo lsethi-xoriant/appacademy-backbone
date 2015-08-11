@@ -13,7 +13,6 @@ TrelloClone.Views.BoardShow = Backbone.CompositeView.extend({
   },
 
   render: function () {
-    // debugger;
     var content = this.template({ board: this.model })
     this.$el.html(content);
     this.attachSubviews();
