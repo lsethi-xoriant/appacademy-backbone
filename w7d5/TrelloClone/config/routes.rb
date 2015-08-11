@@ -1,11 +1,9 @@
 Rails.application.routes.draw do
   namespace :api, defaults: { format: :json } do
     resources :users, except: [:new, :create]
-    resources :boards do
-      resources :lists, only: [:index, :create, :show, :destroy] do
-        resources :cards, only: [:index, :create, :show, :destroy]
-      end
-    end
+    resources :boards
+    resources :lists, only: [:create, :update, :destroy]
+    resources :cards, only: [:create, :update, :destroy]
   end
 
   resources :users, only: [:new, :create]

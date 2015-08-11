@@ -1,9 +1,4 @@
 class Api::ListsController < ApplicationController
-  def index
-    @lists = List.where("board_id = ? ", params[:board_id])
-    render "index"
-  end
-
   def create
     @list = List.new(list_params)
     if @list.save
@@ -13,9 +8,7 @@ class Api::ListsController < ApplicationController
     end
   end
 
-  def show
-    @list = List.find(params[:id])
-    render 'show'
+  def update
   end
 
   def destroy

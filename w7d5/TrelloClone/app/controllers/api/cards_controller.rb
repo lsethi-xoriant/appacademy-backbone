@@ -1,8 +1,4 @@
 class Api::CardsController < ApplicationController
-  def index
-    @cards = Card.where("list_id = ?", params[:list_id])
-    render "index"
-  end
 
   def create
     @card = Card.new(card_params)
@@ -13,9 +9,7 @@ class Api::CardsController < ApplicationController
     end
   end
 
-  def show
-    @card = Card.find(params[:id])
-    render 'show'
+  def update
   end
 
   def destroy
