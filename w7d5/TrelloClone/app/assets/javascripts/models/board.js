@@ -9,7 +9,20 @@ TrelloClone.Models.Board = Backbone.Model.extend({
     return this._lists
   },
 
+  cards: function () {
+    if (!this._cards) {
+      this._cards = new TrelloClone.Collections.Cards();
+    }
+
+    return this._cards;
+  },
+
   parse: function (payload) {
+    // if (payload.lists.cards) {
+    //   this.cards().set(payload.lists.cards);
+    //   delete payload.lists.cards;
+    // }
+
     if (payload.lists) {
       this.lists().set(payload.lists);
       delete payload.lists;
